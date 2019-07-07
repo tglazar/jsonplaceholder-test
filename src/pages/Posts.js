@@ -29,8 +29,7 @@ class PostsPage extends Component {
 
         return (
             <main>
-
-
+                <button onClick={this.fetchPosts}>Refresh</button>
                 {posts}
             </main>
         )
