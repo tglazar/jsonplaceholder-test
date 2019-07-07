@@ -19,3 +19,10 @@ export const fetchPostDetails = (id) => {
         payload: id
     };
 };
+
+export  const deleteComment = (id) => {
+    return {
+        type: actionTypes.POST_COMMENT_DELETE_START,
+        payload: id
+    };
+};

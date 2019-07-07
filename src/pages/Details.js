@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PostsDetails from '../components/Posts/Details';
-import {fetchPostDetails} from '../store/actions/posts';
+import {fetchPostDetails, deleteComment} from '../store/actions/posts';
 
 class PostDetailsPage extends Component {
     componentDidMount() {
@@ -16,6 +16,7 @@ class PostDetailsPage extends Component {
                 <main>
                     <PostsDetails
                         goBack={() => changePageTo('/list')}
+                        deleteComment={(commentId) => this.props.deleteComment(commentId)}
                         post={post}/>
                 </main>
             );
@@ -39,6 +40,7 @@ const stateToProps = state => {
 const dispatchToProps = dispatch => {
     return {
         fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
+        deleteComment: (id) => dispatch(deleteComment(id)),
     };
 };
 

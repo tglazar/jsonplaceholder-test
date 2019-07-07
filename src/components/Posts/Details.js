@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({post, goBack}) => {
+export default ({post, goBack, deleteComment}) => {
     return (
         <div>
             <p>
@@ -13,6 +13,7 @@ export default ({post, goBack}) => {
                 {post.comments.map((comment) =>
                     <li key={comment.id}>
                         {comment.body}
+                        <p><span onClick={() => deleteComment(comment.id)}>Delete comment</span></p>
                     </li>
                 )}
             </ol>

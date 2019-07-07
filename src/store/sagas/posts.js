@@ -46,3 +46,21 @@ export function* fetchPostDetailsSaga(action) {
         });
     }
 }
+
+export function* deleteCommentSaga(action) {
+    try {
+        yield call(fetch, `${baseUrl}/comments/${action.payload}`, {
+            method: 'DELETE'
+        });
+
+        yield put({
+            type: actionTypes.POST_COMMENT_DELETE_SUCCESS,
+            payload: action.payload
+        });
+    } catch (e) {
+        yield put({
+            type: actionTypes.POST_COMMENT_DELETE_FAIL,
+            payload: e
+        });
+    }
+}
