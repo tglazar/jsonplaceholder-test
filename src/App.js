@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Page from './pages/Page';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    page: '/list',
+    postId: 0
+  };
+
+  changeViewHandler = (page, postId = 0) => {
+    this.setState({
+      page: page,
+      postId: postId,
+    });
+  };
+
+  render() {
+    return (<div className="App">
+      <main>
+        <Page name={this.state.page}
+              changePageTo={this.changeViewHandler}
+              id={this.state.postId}
+        />
+      </main>
+    </div>)
+  };
 }
-
-export default App;
