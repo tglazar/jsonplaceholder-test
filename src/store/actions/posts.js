@@ -5,3 +5,10 @@ export const fetchPosts = () => {
         type: actionTypes.POST_LIST_FETCH_START,
     };
 };
+
+export const updateAuthorFilter = (author) => {
+    return {
+        type: actionTypes.POST_FILTER_UPDATE,
+        payload: author
+    };
+};

@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/types';
 
 const initialState = {
+    authorName: '',
     data: [],
     users: []
 };
@@ -17,6 +18,13 @@ function findUserById(users, id) {
 }
 
 /** Action reducers */
+function updateFilter(state, action) {
+    return {
+        ...state,
+        authorName: action.payload,
+    };
+}
+
 function postsListLoadStart(state, action) {
     return {
         ...state,
@@ -43,6 +51,8 @@ function postsListLoadSuccess(state, action) {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.POST_FILTER_UPDATE:
+            return updateFilter(state, action);
         case actionTypes.POST_LIST_FETCH_START:
         case actionTypes.POST_LIST_FETCH_FAIL:
             return postsListLoadStart(state, action);
