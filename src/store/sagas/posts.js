@@ -24,3 +24,25 @@ export function* fetchPostsSaga() {
         });
     }
 }
+
+export function* fetchPostDetailsSaga(action) {
+    try {
+        const responses = yield all({
+            post: call(fetch, `${baseUrl}/posts/${action.payload}`),
+            comments: call(fetch, `${baseUrl}/comments?postId=${action.payload}`),
+        });
+
+        yield put({
+            type: actionTypes.POST_DETAILS_FETCH_SUCCESS,
+            payload: {
+                post: yield responses.post.json(),
+                comments: yield responses.comments.json(),
+            }
+        });
+    } catch (e) {
+        yield put({
+            type: actionTypes.POST_DETAILS_FETCH_FAIL,
+            payload: e
+        });
+    }
+}

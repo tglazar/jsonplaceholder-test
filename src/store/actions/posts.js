@@ -12,3 +12,10 @@ export const updateAuthorFilter = (author) => {
         payload: author
     };
 };
+
+export const fetchPostDetails = (id) => {
+    return {
+        type: actionTypes.POST_DETAILS_FETCH_START,
+        payload: id
+    };
+};

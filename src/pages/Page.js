@@ -1,8 +1,10 @@
 import React from 'react';
 import Posts from './Posts';
+import PostDetails from './Details';
 
 const PAGES = {
     '/list': Posts,
+    '/details': PostDetails,
 };
 
 export default (props) => {
