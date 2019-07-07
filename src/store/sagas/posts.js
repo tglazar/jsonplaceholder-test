@@ -47,6 +47,28 @@ export function* fetchPostDetailsSaga(action) {
     }
 }
 
+export function* addCommentSaga(action) {
+    try {
+        const response = yield call(fetch, `${baseUrl}/comments`, {
+            method: 'POST',
+            body: JSON.stringify(action.payload),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+
+        yield put({
+            type: actionTypes.POST_COMMENT_ADD_SUCCESS,
+            payload: yield response.json()
+        });
+    } catch (e) {
+        yield put({
+            type: actionTypes.POST_COMMENT_ADD_FAIL,
+            payload: e
+        });
+    }
+}
+
 export function* deleteCommentSaga(action) {
     try {
         yield call(fetch, `${baseUrl}/comments/${action.payload}`, {

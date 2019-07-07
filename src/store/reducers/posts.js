@@ -70,6 +70,17 @@ function postDetailsLoadEnd(state, action) {
     };
 }
 
+
+function addComment(state, action) {
+    return {
+        ...state,
+        currentPost: {
+            ...state.currentPost,
+            comments: state.currentPost.comments.concat(action.payload)
+        }
+    };
+}
+
 function deleteComment(state, action) {
     return {
         ...state,
@@ -96,6 +107,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.POST_DETAILS_FETCH_SUCCESS:
             return postDetailsLoadEnd(state, action);
 
+        case actionTypes.POST_COMMENT_ADD_SUCCESS:
+            return addComment(state, action);
         case actionTypes.POST_COMMENT_DELETE_SUCCESS:
             return deleteComment(state, action);
         default:

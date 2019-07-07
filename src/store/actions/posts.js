@@ -20,6 +20,13 @@ export const fetchPostDetails = (id) => {
     };
 };
 
+export const addComment = (comment) => {
+    return {
+        type: actionTypes.POST_COMMENT_ADD_START,
+        payload: comment
+    };
+};
+
 export  const deleteComment = (id) => {
     return {
         type: actionTypes.POST_COMMENT_DELETE_START,

@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PostsDetails from '../components/Posts/Details';
-import {fetchPostDetails, deleteComment} from '../store/actions/posts';
+import CommentsForm from '../components/Posts/CommentsForm';
+import {fetchPostDetails, addComment, deleteComment} from '../store/actions/posts';
 
 class PostDetailsPage extends Component {
     componentDidMount() {
         this.props.fetchPostDetails(this.props.id);
+    }
+
+    onCommentAdd(comment) {
+        this.props.addComment({
+            ...comment,
+            postId: this.props.post.id
+        });
     }
 
     render() {
@@ -18,6 +26,7 @@ class PostDetailsPage extends Component {
                         goBack={() => changePageTo('/list')}
                         deleteComment={(commentId) => this.props.deleteComment(commentId)}
                         post={post}/>
+                    <CommentsForm onSubmit={this.onCommentAdd.bind(this)}/>
                 </main>
             );
         }
@@ -40,6 +49,7 @@ const stateToProps = state => {
 const dispatchToProps = dispatch => {
     return {
         fetchPostDetails: (id) => dispatch(fetchPostDetails(id)),
+        addComment: (comment) => dispatch(addComment(comment)),
         deleteComment: (id) => dispatch(deleteComment(id)),
     };
 };
