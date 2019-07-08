@@ -1,10 +1,11 @@
 import React from "react";
+import './Item.scss';
 
 const PostItem = ({title, author, click}) => {
     return (
-        <div>
-            <h2 onClick={click}>{title}</h2>
-            <p>Author: {author}</p>
+        <div className="posts-item">
+            <h2 onClick={click} className="posts-item__title">{title}</h2>
+            <p className="posts-item__author">Author: <span className="posts-item__author-name">{author}</span></p>
         </div>
     );
 };

@@ -1,0 +1,17 @@
+@import "../styles/_mixins";
+@import "../styles/_colors";
+@import "../styles/_spacing";
+
+.posts {
+  @include center-container;
+
+  &__options {
+    @include center-container;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: $padding;
+    border-bottom: 1px solid $color-primary-light;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/_mixins";
+
+.posts-details {
+  @include center-container;
+
+  &__back {
+    cursor: pointer;
+  }
+
+  &__title::first-letter {
+    text-transform: uppercase;
+  }
+
+  &__author {
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  &__author-name {
+    font-style: normal;
+  }
+
+  &__delete-comment {
+    text-align: right;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+}

@@ -15,13 +15,11 @@ export default class App extends Component {
   };
 
   render() {
-    return (<div className="App">
-      <main>
+    return (
         <Page name={this.state.page}
               changePageTo={this.changeViewHandler}
               id={this.state.postId}
         />
-      </main>
-    </div>)
+    )
   };
 }

@@ -1,0 +1,19 @@
+.posts-item {
+
+  &__title {
+    cursor: pointer;
+  }
+
+  &__title::first-letter {
+    text-transform: uppercase;
+  }
+
+  &__author {
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  &__author-name {
+    font-style: normal;
+  }
+}

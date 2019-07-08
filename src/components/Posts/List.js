@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostItem from './Item';
+import './List.scss';
 
 export default class PostsList extends Component {
     onItemClickHandler = (postId) => {
@@ -8,9 +9,9 @@ export default class PostsList extends Component {
 
     render(){
         return (
-            <ol>
+            <ol className="posts-list">
                 {this.props.posts.map((post) =>
-                    <li key={post.id}>
+                    <li key={post.id} className="posts-list__item">
                         <PostItem
                             title={post.title}
                             author={post.author}

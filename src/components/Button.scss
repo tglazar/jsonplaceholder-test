@@ -1,0 +1,21 @@
+@import "../styles/_colors.scss";
+@import "../styles/_spacing.scss";
+
+.button {
+  cursor: pointer;
+  padding: $input-padding;
+  color: $color-primary;
+  background-color: $color-primary-bg;
+  border-width: 2px;
+  border-color: $color-primary-light;
+  border-radius: $border-radius-default;
+  font-size: 16px;
+  font-family: sans-serif;
+
+  &--active,
+  &:hover {
+    color: $color-active;
+    background-color: $color-active-bg;
+    border-color: $color-active;
+  }
+}

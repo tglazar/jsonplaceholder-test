@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Button from '../components/Button';
 import PostsList from '../components/Posts/List';
 import PostsFilter from '../components/Posts/Filter';
 import {fetchPosts, updateAuthorFilter} from '../store/actions/posts';
+
+import './Posts.scss';
 
 class PostsPage extends Component {
     componentDidMount() {
@@ -34,14 +37,18 @@ class PostsPage extends Component {
                 posts={this.props.posts}/>
         }
 
-        return (
-            <main>
-                <button onClick={this.fetchPosts}>Refresh</button>
-                <PostsFilter
-                    filter={this.props.authorName}
-                    changed={this.filterChangedHandler}/>
-                {posts}
-            </main>
+        return (<div className="posts">
+                <main>
+                    <div className="posts__options">
+                        <PostsFilter
+                            filter={this.props.authorName}
+                            changed={this.filterChangedHandler}/>
+                        <div className="posts__counter">Available posts: {this.props.posts.length}</div>
+                        <Button onClick={this.fetchPosts}>Refresh</Button>
+                    </div>
+                    {posts}
+                </main>
+            </div>
         )
     };
 }
