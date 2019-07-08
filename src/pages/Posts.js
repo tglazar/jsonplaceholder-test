@@ -54,8 +54,8 @@ class PostsPage extends Component {
 }
 
 function filterPosts(state, filterValue) {
-    if (filterValue.length < 3) {
-        return state.posts.data
+    if (filterValue.length === 0) {
+        return state.posts.data;
     }
 
     return state.posts.data.filter((post) => {
